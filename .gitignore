@@ -1,0 +1,16 @@
+build/
+build-webpack/
+node_modules/
+lib/
+coverage/
+
+*.sqlite
+
+**/*.log
+
+**/.DS_Store
+
+.idea/
+
+.env
+.env.docker

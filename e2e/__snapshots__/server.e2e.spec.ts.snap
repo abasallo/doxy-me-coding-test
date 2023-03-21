@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server E2E tests Health Check E2E tests Expected response for Health Check 1`] = `"OK"`;
+
+exports[`Server E2E tests Product E2E tests Add Product 1`] = `
+{
+  "description": "new-description",
+  "id": Any<Number>,
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests Product E2E tests Delete Product 1`] = `
+{
+  "description": "updated-description",
+  "id": Any<Number>,
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests Product E2E tests Find Products 1`] = `
+[
+  {
+    "description": "description-2",
+    "id": 2,
+    "userId": 3,
+  },
+  {
+    "description": "description-3",
+    "id": 3,
+    "userId": 3,
+  },
+]
+`;
+
+exports[`Server E2E tests Product E2E tests Get Product 1`] = `
+{
+  "description": "new-description",
+  "id": Any<Number>,
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests Product E2E tests Update Product 1`] = `
+{
+  "description": "updated-description",
+  "id": Any<Number>,
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests Review E2E tests Add Review 1`] = `
+{
+  "id": Any<Number>,
+  "productId": Any<Number>,
+  "text": "Review Text",
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests Review E2E tests Find Reviews 1`] = `
+[
+  {
+    "id": 2,
+    "productId": 3,
+    "text": "review-text-2",
+    "userId": 2,
+  },
+  {
+    "id": 3,
+    "productId": 3,
+    "text": "review-text-3",
+    "userId": 3,
+  },
+]
+`;
+
+exports[`Server E2E tests Review E2E tests Get Review 1`] = `
+{
+  "id": Any<Number>,
+  "productId": Any<Number>,
+  "text": "review-text-1",
+  "userId": Any<Number>,
+}
+`;
+
+exports[`Server E2E tests User E2E tests Sign in 1`] = `
+{
+  "token": Any<String>,
+}
+`;
+
+exports[`Server E2E tests User E2E tests Sign up 1`] = `
+{
+  "id": Any<Number>,
+  "username": "username-test",
+}
+`;
