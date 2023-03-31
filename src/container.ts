@@ -1,4 +1,3 @@
-import { model } from './model'
 import winston from 'winston'
 
 import { getProduct, addProduct, updateProduct, deleteProduct, findProduct } from './services/Product'
@@ -13,8 +12,10 @@ import { logMiddleware } from './express/middlewares/log'
 
 import { initialiseSequelize } from './orm/initialiseSequelize'
 import NodeCache from 'node-cache'
+import { AppOrm } from './orm/model/appOrm'
+import { initialiseTestDatabase } from './modules/initialiseTestDatabase'
 
-export const logger = winston.createLogger({
+const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: winston.format.json(),
   transports: [
@@ -24,13 +25,17 @@ export const logger = winston.createLogger({
   ]
 })
 
+const ORM = {
+  init: initialiseSequelize(logger)
+}
+
+const model: Promise<AppOrm> = process.env.CONNECTION_URL ? ORM.init(process.env.CONNECTION_URL) : initialiseTestDatabase()
+
 const cache = new NodeCache({ stdTTL: parseInt(process.env.ORM_CACHE_TTL) || 60 })
 
 export const Container: ContainerType = {
   cache,
-  ORM: {
-    init: initialiseSequelize(logger)
-  },
+  ORM,
   Middlewares: {
     paramsCache: paramsCacheMiddleware(logger, cache),
     bodyCache: bodyCacheMiddleware(logger, cache),
